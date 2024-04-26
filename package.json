@@ -28,12 +28,12 @@
     "rxjs": "~7.8.0",
     "sweetalert2": "11.10.8",
     "tslib": "^2.3.0",
-    "xlsx": "^0.18.5",
-    "zone.js": "0.14.4"
-  },"engines": {
+    "xlsx": "^0.18.5"
+  },
+  "engines": {
     "node": "18.13",
     "npm": "7.x"
-  },  
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.2",
     "@angular/cli": "~17.1.3",
