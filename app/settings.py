@@ -18,6 +18,7 @@ from datetime import timedelta
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,8 +27,8 @@ SECRET_KEY = ')m(3-ur#5ar4fnyfmsis*9$_3s@m+uz(-r$u)6lx6a*^ln_8j)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
