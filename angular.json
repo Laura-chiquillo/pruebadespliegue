@@ -25,7 +25,7 @@
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/zone.js/dist/zone.js"]
           },
           "configurations": {
             "production": {
