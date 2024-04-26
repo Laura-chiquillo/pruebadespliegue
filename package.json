@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -25,13 +25,15 @@
     "chart.js": "^4.4.2",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
-    "node": "^18.13.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "zone.js": "^0.14.4"
-  },
+  },"engines": {
+    "node": "16.x",
+    "npm": "7.x"
+  },  
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.2",
     "@angular/cli": "~17.1.3",
