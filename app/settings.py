@@ -136,9 +136,9 @@ APPEND_SLASH = False
 # settings.py
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',  # Agrega aquí el origen de tu frontend Angular
-    # Otros orígenes permitidos si es necesario...
+    'https://app-frontendprueba-f346984aaa03.herokuapp.com',
 ]
+
 
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'numerodocumento',
@@ -149,6 +149,7 @@ CORS_ORIGIN_ALLOW_ALL: True
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
+    'https://app-frontendprueba-f346984aaa03.herokuapp.com/'
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
