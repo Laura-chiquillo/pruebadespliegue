@@ -94,6 +94,7 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = ['127.0.0.1', 'dqhseeub8t30f']
+ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
