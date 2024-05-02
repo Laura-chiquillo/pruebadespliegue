@@ -1,6 +1,12 @@
+import ast
+import json
+from datetime import datetime
+
 from django.contrib.auth.hashers import check_password
 from django.db import transaction
 from django.http import Http404, JsonResponse
+from django.utils import dateformat, timezone
+from django.utils.timezone import make_aware
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers, status
 from rest_framework.exceptions import ValidationError
@@ -8,19 +14,17 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView, exception_handler
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.utils import timezone, dateformat
-import json
-from datetime import datetime
-from django.utils.timezone import make_aware
-import ast
 
-from .models import (Apropiacion, Articulos, Capitulos, Consultoria, Contenido,
-                     Contrato, EntidadPostulo, EstadoProyecto,
-                     Estudiantes, Eventos, Financiacion, Industrial, ConfiguracionEntregableProducto, ConfiguracionEntregableProyecto, 
-                     Investigador, Libros, Licencia, ListaProducto, Maestria, AvanceEntregableProducto, AvanceEntregableProyecto,
-                     PregFinalizadoyCurso, Producto, Proyecto, Reconocimientos,
-                     Software, Transacciones, UbicacionProyecto, ParticipantesExternos, EstadoProducto,
-                     CategoriaMinciencias,CuartilEsperado,TipoEventos)
+from .models import (Apropiacion, Articulos, AvanceEntregableProducto,
+                     AvanceEntregableProyecto, Capitulos, CategoriaMinciencias,
+                     ConfiguracionEntregableProducto,
+                     ConfiguracionEntregableProyecto, Consultoria, Contenido,
+                     Contrato, CuartilEsperado, EntidadPostulo, EstadoProducto,
+                     EstadoProyecto, Estudiantes, Eventos, Financiacion,
+                     Industrial, Investigador, Libros, Licencia, ListaProducto,
+                     Maestria, ParticipantesExternos, PregFinalizadoyCurso,
+                     Producto, Proyecto, Reconocimientos, Software,
+                     TipoEventos, Transacciones, UbicacionProyecto)
 from .serializer import (investigadorSerializer, productoSerializer,
                          proyectoSerializer)
 
@@ -721,6 +725,42 @@ class CrearNuevoProducto(APIView):
         serializer = productoSerializer(producto)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
+class MostrarInvestigadores(APIView):
+    def get(self, request, *args, **kwargs):
+        investigadores = Investigador.objects.all()
+
+        data = []
+        for investigador in investigadores:
+            proyectos = investigador.proyecto_set.all()
+            productos = investigador.producto_set.all()
+            
+            proyectos_data = [{
+                'codigo': proyecto.codigo,
+                'fecha': proyecto.fecha,
+                'titulo': proyecto.titulo,
+                # otros campos del proyecto si los hay
+            } for proyecto in proyectos]
+
+            productos_data = [{
+                'id': producto.id,
+                'tituloProducto': producto.tituloProducto,
+                # otros campos del producto si los hay
+            } for producto in productos]
+            
+            investigador_data = {
+                'nombre': investigador.nombre,
+                'apellidos': investigador.apellidos,
+                'numerodocumento': investigador.numerodocumento,
+                'Grupoinvestigacion':investigador.grupoinvestigacion.nombre,
+                'proyectos': proyectos_data,
+                'productos': productos_data
+                # otros campos del investigador si los hay
+            }
+            data.append(investigador_data)
+
+        return JsonResponse(data, safe=False)
+    
 
 class MostrarInvestigadores(APIView):
     def get(self, request, *args, **kwargs):
