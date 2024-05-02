@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
 ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
