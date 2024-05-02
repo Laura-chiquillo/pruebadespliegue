@@ -2,8 +2,8 @@ import datetime
 
 from django.contrib.auth.hashers import make_password
 from django.db import models, transaction
-from rest_framework.authtoken.models import Token
 from django.utils import timezone
+from rest_framework.authtoken.models import Token
 
 # Se crean las clases para los modelos
 # colocamos los atributos de la clase
@@ -113,6 +113,10 @@ class Pregrado(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     class Meta:
         db_table = 'proyecto_Pregrado'
+
+#---------------------------------------------------------------------------------------
+# ----------------------------------------------------- Producto -----------------------
+#---------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------
 # ----------------------------------------------------- Producto -----------------------
