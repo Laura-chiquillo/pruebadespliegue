@@ -17,8 +17,8 @@ from datetime import timedelta
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-
+DEBUG = True
+ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -27,8 +27,8 @@ SECRET_KEY = ')m(3-ur#5ar4fnyfmsis*9$_3s@m+uz(-r$u)6lx6a*^ln_8j)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
 
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -93,8 +93,6 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'dqhseeub8t30f']
-ALLOWED_HOSTS = ['app-proyecto-119c428c75f0.herokuapp.com']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -155,4 +153,4 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
-MEDIA_URL = '/media/'                          
+MEDIA_URL = '/media/'  
